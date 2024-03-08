@@ -9,17 +9,17 @@ app.set("views", "view");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res, next) => {
-  res.render("Home/home");
+  res.render("home/home");
 });
 
 app.get("/startmeeting", (req, res, next) => {
-  res.render("Home/home");
+  res.render("video/video");
 });
 
 app.get("/joinmeeting/:id", (req, res, next) => {
   const id = req.params.id;
   console.log(id);
-  res.render("Home/home");
+  res.render("video/video");
 });
 
 app.listen(port, () => {
