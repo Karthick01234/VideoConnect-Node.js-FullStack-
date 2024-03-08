@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+@media (max-width: 600px) {
+  body {
+    overflow: hidden; /* Prevent scrolling on mobile screens */
+  }
+}
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #3498db;
+  border-radius: 10px;
+  background-color: rgba(52, 152, 219, 0.2);
+  width: 80%;
+  max-width: 600px;
+}
+
+.quote {
+  font-size: 24px;
+  font-style: italic;
+  color: #3498db;
+  margin-top: 10px;
+}
+
+.author {
+  font-size: 18px;
+  color: #555;
+  margin-top: 10px;
+}
+#startMeeting,
+#joinMeeting {
+  width: 120px;
+  height: 40px;
+  position: absolute;
+  z-index: 2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.3);
+}
+#startMeeting {
+  left: calc(50% - 140px);
+  top: 90%;
+  background: linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.1));
+}
+#startMeeting:hover {
+  background: linear-gradient(rgba(0, 128, 0, 0.5), rgba(0, 128, 0, 0.3));
+  box-shadow: 0 8px 16px rgba(0, 128, 0, 0.5);
+}
+#joinMeeting {
+  left: calc(50% + 20px);
+  top: 90%;
+  background: linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.1));
+}
+#joinMeeting:hover {
+  background: linear-gradient(rgba(0, 128, 0, 0.5), rgba(0, 128, 0, 0.3));
+  box-shadow: 0 8px 16px rgba(0, 128, 0, 0.5);
+}
