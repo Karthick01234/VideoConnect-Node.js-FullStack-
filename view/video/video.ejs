@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/video.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="video-container">
+      <div id="dropdown" class="dropdown-symbol"></div>
+      <video id="localVideo" muted></video>
+      <video id="remoteVideo"></video>
+    </div>
+    <div id="callon">
+      <div id="slide" class="slide-bar">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+      </div>
+      <div class="slide-space" id="slideSpace">
+        <div class="icon-container">
+          <i id="call" class="fas fa-phone icon"></i>
+          <i id="mic" class="fas fa-microphone icon"></i>
+          <i id="camera" class="fas fa-video icon"></i>
+          <i id="mutecamera" class="fas fa-volume-mute icon"></i>
+        </div>
+        <div class="textbox-container">
+          <div class="textbox">
+            <i class="meet">Meeting Code</i>
+            <i id="clipboard" class="far fa-clipboard clipboard-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/js/video.js"></script>
+  </body>
+</html>
