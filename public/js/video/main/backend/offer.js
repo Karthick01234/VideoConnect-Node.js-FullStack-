@@ -10,7 +10,6 @@ export async function Offer() {
   remoteStream = new MediaStream();
 
   localStream.getTracks().forEach((track) => {
-    console.log(track);
     pc.addTrack(track, localStream);
   });
 
@@ -20,17 +19,17 @@ export async function Offer() {
     });
   };
 
-  webcamVideo.srcObject = localStream;
-  remoteVideo.srcObject = remoteStream;
+  // webcamVideo.srcObject = localStream;
+  // remoteVideo.srcObject = remoteStream;
 
-  const callDoc = doc(collection(firestore, "calls"));
-  const offerCandidates = collection(callDoc, "offerCandidates");
-  const answerCandidates = collection(callDoc, "answerCandidates");
+  // const callDoc = doc(collection(firestore, "calls"));
+  // const offerCandidates = collection(callDoc, "offerCandidates");
+  // const answerCandidates = collection(callDoc, "answerCandidates");
 
-  console.log(callDoc.id);
+  // console.log(callDoc.id);
 
   pc.onicecandidate = (event) => {
-    event.candidate && addDoc(offerCandidates, event.candidate.toJSON());
+    event.candidate && socket.emit("candidate", event.candidate); //addDoc(offerCandidates, event.candidate.toJSON());
   };
 
   const offerDescription = await pc.createOffer();
@@ -41,7 +40,7 @@ export async function Offer() {
     type: offerDescription.type,
   };
 
-  await setDoc(callDoc, { offer });
+  socket.emit("doc", { offer }); // await setDoc(callDoc, { offer });
 
   onSnapshot(callDoc, (snapshot) => {
     const data = snapshot.data();
