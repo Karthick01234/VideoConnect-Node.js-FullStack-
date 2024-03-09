@@ -1,4 +1,4 @@
-import { servers } from "./variable.js";
+import { servers } from "../variable.js";
 const pc = new RTCPeerConnection(servers);
 let localStream = null;
 let remoteStream = null;

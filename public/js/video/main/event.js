@@ -5,9 +5,9 @@ import {
   toggleCamera,
   toggleCameraMute,
   copyToClipboard,
-} from "./../frontend/videocall.js";
+} from "./frontend/videocall.js";
 
-import { hide, toggleSlide } from "./../frontend/videohide.js";
+import { hide, toggleSlide } from "./frontend/videohide.js";
 
 import {
   startDrag,
@@ -16,7 +16,7 @@ import {
   stopTouchDrag,
   performDrag,
   performTouchDrag,
-} from "./../frontend/videomovement.js";
+} from "./frontend/videomovement.js";
 
 export function eventListen() {
   val.localVideo.addEventListener("mousedown", (e) => {
