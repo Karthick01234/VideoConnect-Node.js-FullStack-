@@ -11,6 +11,9 @@ body {
   height: 100vh;
   background-color: #f0f0f0;
 }
+#secret {
+  display: none;
+}
 #remoteVideo {
   background-color: black;
   object-fit: fill;
