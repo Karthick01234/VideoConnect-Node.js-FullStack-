@@ -3,13 +3,18 @@ import { io } from "../socket.io.esm.min.js";
 const value = parseInt(document.getElementById("secret").innerHTML);
 
 eventListen();
-const socket = io();
-
-window.onvisibilitychange = () => {
-  if (window.onvisibilitystate == "hidden") {
-    alert("hii");
-  }
-};
+let socket = "";
+if (sessionStorage.getItem("sessionID")) {
+  socket = io({
+    query: { token: sessionStorage.getItem("sessionID") },
+  });
+} else {
+  socket = io();
+}
+socket.on("welcome", (message) => {
+  sessionStorage.setItem("sessionID", message);
+  console.log(sessionStorage.getItem("sessionID"));
+});
 
 if (value === 0) {
   console.log("hii");

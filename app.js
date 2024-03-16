@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const http = require("http");
 const socketIO = require("socket.io");
+const uuid = require("uuid");
+const users = require("./model/video/user");
 
 const app = express();
 const server = http.createServer(app);
@@ -14,9 +16,32 @@ app.set("views", "view");
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
+  let sessionId;
+  if (socket.handshake.query.token) {
+    sessionId = socket.handshake.query.token;
+  } else {
+    sessionId = uuid.v4();
+    socket.emit("welcome", sessionId);
+  }
+  const user = new users(sessionId, socket.id);
+  user
+    .save()
+    .then(() => {
+      console.log("Insert Successfull");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   socket.on("disconnect", () => {
     console.log("disconnect");
+    user
+      .delete(sessionId)
+      .then(() => {
+        console.log("Delete Successfull");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 });
 

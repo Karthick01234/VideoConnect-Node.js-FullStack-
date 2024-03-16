@@ -18,4 +18,4 @@ class DB {
     return getFirestore(this.#app);
   }
 }
-export default DB;
+module.exports = DB;
