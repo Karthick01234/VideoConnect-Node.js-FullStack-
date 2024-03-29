@@ -1,23 +1,27 @@
 import { eventListen } from "./main/event.js";
 import { io } from "../socket.io.esm.min.js";
+import { Offer } from "./main/offer.js";
+import { Answer } from "./main/answer.js";
+
 const value = parseInt(document.getElementById("secret").innerHTML);
 
 eventListen();
-let socket = "";
-if (sessionStorage.getItem("sessionID")) {
-  socket = io({
-    query: { token: sessionStorage.getItem("sessionID") },
-  });
-} else {
-  socket = io();
-}
-socket.on("welcome", (message) => {
-  sessionStorage.setItem("sessionID", message);
-  console.log(sessionStorage.getItem("sessionID"));
-});
+const socket = sessionStorage.getItem("sessionID")
+  ? io({
+      query: { token: sessionStorage.getItem("sessionID"), dt: value },
+    })
+  : io({
+      query: { dt: value },
+    });
 
-if (value === 0) {
-  console.log("hii");
-} else {
-  console.log("hey");
-}
+socket.on("welcome", (message) => {
+  if (!sessionStorage.getItem("sessionID")) {
+    sessionStorage.setItem("sessionID", message);
+  }
+  if (value === 0) {
+    Offer(socket);
+  } else {
+    let id = prompt("Enter Meet Id");
+    Answer(socket, id);
+  }
+});

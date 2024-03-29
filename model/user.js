@@ -1,4 +1,4 @@
-const db = require("../../data/sqldb");
+const db = require("../data/sqldb");
 
 class user {
   constructor(uuid, socketID) {

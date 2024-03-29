@@ -15,5 +15,12 @@ export function toggleCameraMute() {
 }
 
 export function copyToClipboard() {
-  alert("Text copied to clipboard");
+  navigator.clipboard
+    .writeText(sessionStorage.getItem("code"))
+    .then(() => {
+      console.log("Text copied to clipboard:");
+    })
+    .catch((err) => {
+      console.error("Failed to copy text: ", err);
+    });
 }

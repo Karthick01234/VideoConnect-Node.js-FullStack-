@@ -3,7 +3,8 @@ const path = require("path");
 const http = require("http");
 const socketIO = require("socket.io");
 const uuid = require("uuid");
-const users = require("./model/video/user");
+const users = require("./model/user");
+const vidroutes = require("./routes/vidroutes");
 
 const app = express();
 const server = http.createServer(app);
@@ -15,16 +16,20 @@ app.set("views", "view");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
   let sessionId;
+  let dt;
   if (socket.handshake.query.token) {
     sessionId = socket.handshake.query.token;
+    dt = parseInt(socket.handshake.query.dt);
+    socket.emit("welcome", sessionId);
   } else {
     sessionId = uuid.v4();
+    dt = parseInt(socket.handshake.query.dt);
     socket.emit("welcome", sessionId);
   }
   const user = new users(sessionId, socket.id);
-  user
+  await user
     .save()
     .then(() => {
       console.log("Insert Successfull");
@@ -32,9 +37,12 @@ io.on("connection", (socket) => {
     .catch((err) => {
       console.log(err);
     });
-  socket.on("disconnect", () => {
+
+  vidroutes(socket, sessionId, dt);
+
+  socket.on("disconnect", async () => {
     console.log("disconnect");
-    user
+    await user
       .delete(sessionId)
       .then(() => {
         console.log("Delete Successfull");
@@ -55,9 +63,7 @@ app.get("/startmeeting", (req, res, next) => {
   });
 });
 
-app.get("/joinmeeting/:id", (req, res, next) => {
-  const id = req.params.id;
-  console.log(id);
+app.get("/joinmeeting", (req, res, next) => {
   res.render("video/video", {
     dt: 1,
   });
