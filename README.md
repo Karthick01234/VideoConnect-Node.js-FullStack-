@@ -1,5 +1,14 @@
 ﻿# VideoConnect-Node.js-FullStack
 
+Overview
+    We are developing a video, voice text chat application that will be provided as an SDK, intended for use across various platforms. Given the versatility required for an SDK, we are using a range of frameworks and languages to cater to web, hybrid, and Android applications. Development Approach
+
+Full Stack Development
+Node.js: For comprehensive full stack solutions.
+
+Backend DevelopmentSpring BootNode.jsASP.NET (MVC)Frontend DevelopmentReact.jsPure JavaScriptFlutter: For hybrid applications.Kotlin: For native Android applications.CommunicationThe frontend is designed to be versatile and will communicate seamlessly with any of the backends we develop.GoalsTo create a flexible and robust video call application SDK.Ensure compatibility across various platforms and frameworks.Facilitate easy integration and use by developers.
+
+This
 Video, Voice, Text chat Application - App Name (VideoConnect).
 
 This application has 3 versions.
