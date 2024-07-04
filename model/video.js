@@ -11,12 +11,10 @@ class Video {
       this.doc = firestore.doc(db, "videodb", this.id);
       this.answers = firestore.collection(this.doc, "answers");
       this.offers = firestore.collection(this.doc, "offers");
-      console.log("this.doc");
       return firestore
         .getDoc(this.doc)
         .then((doc) => {
           this.callData = doc.data();
-          console.log("this.callData");
           return this.callData.offer;
         })
         .catch((error) => {
