@@ -1,32 +1,39 @@
 ﻿# VideoConnect-Node.js-FullStack
 
 Overview
-    *) We are developing a video, voice text chat application that will be provided as an SDK, intended for use across various platforms. Given the versatility required for an SDK, we are using a range of frameworks and languages to cater to web, hybrid, and Android applications.
+
+1.  We are developing a video, voice text chat application that will be provided as an SDK, intended for use across various platforms.
+2.  Given the versatility required for an SDK, we are using a range of frameworks and languages to cater to web, hybrid, and Android applications.
 
 Development Approach
 
 Full Stack Development
-    Node.js: For comprehensive full stack solutions.
-    ASP.NET(MVC): For comprehensive full stack solutions.
+
+1.  Node.js: For comprehensive full stack solutions.
+2.  ASP.NET(MVC): For comprehensive full stack solutions.
 
 Backend Development
-    Spring Boot
-    Node.js
-    ASP.NET
+
+1.  Spring Boot
+2.  Node.js
+3.  ASP.NET
 
 Frontend Development
-    React.js: For web applications.
-    Pure JavaScript: For web and Hybrid applications.
-    Flutter: For hybrid applications.
-    Kotlin: For native Android applications.
+
+1.  React.js: For web applications.
+2.  Pure JavaScript: For web and Hybrid applications.
+3.  Flutter: For hybrid applications.
+4.  Kotlin: For native Android applications.
 
 Communication
-    The frontend is designed to be versatile and will communicate seamlessly with any of the backends we develop.
+
+1.  The frontend is designed to be versatile and will communicate seamlessly with any of the backends we develop.
 
 Goals
-    To create a flexible and robust video, voice, text chat application SDK.
-    Ensure compatibility across various platforms and frameworks.
-    Facilitate easy integration and use by developers.
+
+1.  To create a flexible and robust video, voice, text chat application SDK.
+2.  Ensure compatibility across various platforms and frameworks.
+3.  Facilitate easy integration and use by developers.
 
 This is Video, Voice, Text chat Application - App Name (VideoConnect).
 
